@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News App</title>
+  <style>
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .card img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Latest News</h1>
+  <div class="card-grid">
+    <% news.forEach(article => { %>
+      <div class="card">
+        <h2><%= article.title %></h2>
+        <img src="<%= article.urlToImage %>" alt="<%= article.title %>" />
+        <p><strong>Source:</strong> <%= article.source.name %></p>
+        <p><strong>Author:</strong> <%= article.author %></p>
+        <p><strong>Description:</strong> <%= article.description %></p>
+        <p><strong>Published At:</strong> <%= article.publishedAt %></p>
+        <a href="<%= article.url %>" target="_blank">Read More</a>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>
